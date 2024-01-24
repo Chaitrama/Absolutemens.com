@@ -66,7 +66,7 @@ flutter:
   assets:
     - assets/images/
     - assets/svg/
-  #   - images/a_dot_ham.jpeg
+    - assets/topdetails.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

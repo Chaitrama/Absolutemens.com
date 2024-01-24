@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:absolutemen_app/model/productlist.dart';
 import 'package:absolutemen_app/screens/widgets/detailscard.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -42,18 +43,18 @@ void initState() {
         toolbarHeight: 70,
         backgroundColor: Colors.white,
         elevation: 1,
-        title: const Image(image: AssetImage('assets/images/logo.png',),
-        ),
         actions: [
           IconButton(onPressed: (){},
            icon:  const Icon(FontAwesomeIcons.heart, color: Colors.black, size: 24,)),
-         
+          const SizedBox(width: 12,),
           IconButton(onPressed: (){}, icon: const Icon(FontAwesomeIcons.bagShopping,color: Colors.black,size: 24,)),
-                  
+                    const SizedBox(width: 12,),
+                    // const SizedBox(width: 16,),
           IconButton(onPressed: (){}, icon: const Icon(Icons.account_circle_outlined,color: Colors.black,size: 24,)),
+                    const SizedBox(width: 12,),
 
           IconButton(onPressed: (){}, icon: const Icon(Icons.menu, color: Colors.black,size: 24,)),
-                    // const SizedBox(width: 12,),
+                    const SizedBox(width: 12,),
                     
         ],
       ),
@@ -840,19 +841,30 @@ void initState() {
       ),
     );
   }
-   Future<List<Products>> getData() async {
-    final response = await http.get(Uri.parse('https://api.jsonserve.com/PwLzWQ'));
-    var data = jsonDecode(response.body.toString());
-
-
-    if (response.statusCode == 200) {
-      for (Map<String, dynamic> index in data) {
+  Future<List<Products>> getData() async {
+    final String response = await rootBundle.loadString('assets/topdetails.json');
+    final data = await json.decode(response);
+    print(data);
+    for (Map<String, dynamic> index in data) {
         userData.add(Products.fromJson(index));
       }
       return userData;
-    }
-    return userData; //empty list
+   
   }
+  //  Future<List<Products>> getData() async {
+  //   final response = await http.get(Uri.parse('https://api.jsonserve.com/PwLzWQ'));
+  //   var data = jsonDecode(response.body.toString());
+
+
+  //   if (response.statusCode == 200) {
+      // for (Map<String, dynamic> index in data) {
+      //   userData.add(Products.fromJson(index));
+      // }
+  //     return userData;
+  //   }
+  //   return userData; //empty list
+  // }
 }
+
 
 
