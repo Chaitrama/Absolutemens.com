@@ -4,7 +4,6 @@ import 'package:absolutemen_app/model/productlist.dart';
 import 'package:absolutemen_app/screens/widgets/detailscard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -43,18 +42,18 @@ void initState() {
         toolbarHeight: 70,
         backgroundColor: Colors.white,
         elevation: 1,
+        title: const Image(image: AssetImage('assets/images/logo.png')),
         actions: [
           IconButton(onPressed: (){},
            icon:  const Icon(FontAwesomeIcons.heart, color: Colors.black, size: 24,)),
-          const SizedBox(width: 12,),
+          
           IconButton(onPressed: (){}, icon: const Icon(FontAwesomeIcons.bagShopping,color: Colors.black,size: 24,)),
-                    const SizedBox(width: 12,),
-                    // const SizedBox(width: 16,),
+                   
           IconButton(onPressed: (){}, icon: const Icon(Icons.account_circle_outlined,color: Colors.black,size: 24,)),
-                    const SizedBox(width: 12,),
+                  
 
           IconButton(onPressed: (){}, icon: const Icon(Icons.menu, color: Colors.black,size: 24,)),
-                    const SizedBox(width: 12,),
+                  
                     
         ],
       ),
